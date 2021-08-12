@@ -1,0 +1,39 @@
+<div class="container">
+    
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)" class="form login-form-container">
+        <div *ngIf="error" class="toast toast-danger">
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+        </div>
+
+        <mat-form-field floatLabel="never" class="form-element">
+            <input type="text" matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="loginFormErrors.email.required">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="!loginFormErrors.email.required && loginFormErrors.email.email">
+                Please enter a valid email address
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field floatLabel="never" class="form-element">
+            <input type="password" matInput placeholder="Password" formControlName="password">
+            <mat-error *ngIf="loginFormErrors.password.required">
+                Password is required
+            </mat-error>
+        </mat-form-field>
+        <div class="forgot-link">
+            <a class="link" [routerLink]="'/forgot-password'">Forgot password?</a>
+        </div>
+        <div class="form-element">
+            <button mat-raised-button color="primary" type="submit" class="button submit-btn"
+                [disabled]="!formGroup.valid">Submit
+            </button>
+        </div>
+        <div class="register">
+            <span class="text">Don't have an account?</span>&nbsp;
+            <a class="link" [routerLink]="'/signup'">Create an account</a>&nbsp;
+        </div>
+
+    </form>
+</div>

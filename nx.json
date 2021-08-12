@@ -1,0 +1,52 @@
+{
+  "npmScope": "fullstack",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "ODhjM2NiODAtZTM4NC00N2NiLTg4NjQtM2MzYmRiMDA5ZTYzfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "api": {
+      "tags": []
+    },
+    "api-interfaces": {
+      "tags": []
+    },
+    "fullstack": {
+      "tags": []
+    },
+    "fullstack-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "fullstack"
+      ]
+    }
+  }
+}
